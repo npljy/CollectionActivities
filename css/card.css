@@ -1,0 +1,609 @@
+@charset "utf-8";
+/* reset  ↓ */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6,em,i {
+    font-weight: 100;
+    font-style: normal
+}
+ul,ol,li {
+    list-style-type: none
+}
+a {
+    color: #666;
+    text-decoration: none;
+    outline: 0
+}
+a:hover {
+    text-decoration: none
+}
+body,.swiper-pagination{
+    -webkit-text-size-adjust: 100%;
+    -webkit-user-select: none;
+    font-family: Helvetica;
+}
+a, input,button,span,.swiper-pagination{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+input,button{
+    -webkit-appearance: none;
+	border-radius: 0;
+	border: none;
+	outline: none;
+}
+.clearfix::after{
+    content: ".";
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    display: block;
+    visibility: hidden;
+}
+/* reset  ↑ */
+/* main  ↓*/
+body{
+    background: url(../imgs/bg.jpg) no-repeat center top;
+    background-size: cover;
+    overflow: auto;
+}
+.wrap{
+    height: 100%;
+    /* padding-top: .35rem; */
+}
+/* header ↓ */
+.header{
+    padding: 0 .32rem;
+    height: .42rem;
+	width: 100%;
+	display: none;
+}
+.header img,.header a{
+    display: inline-block;
+    height: .42rem;
+    width: .42em;
+    vertical-align: top;
+}
+.back{
+    float: left;
+    height: .42rem;
+    width: .42em;
+}
+.share{
+    float: right;
+    height: .42rem;
+    width: .42em;
+}
+.title{
+    overflow: hidden;
+    height: .42rem;
+    line-height: .42rem;
+    font-size: .34rem;
+    text-align: center;
+    font-weight: bold;
+}
+/* header ↑ */
+/* card-list  ↓ */
+.card-list{
+	/* padding-top: .4rem; */
+	padding-top: .2rem;
+    text-align: center;
+}
+.card-list h1{
+    font-weight: bold;
+    font-size:.55rem;
+    color: #8b97ea;
+    margin: 0 auto;
+}
+.card-list p{
+    font-size: .24rem;
+	padding-top: .1rem;
+}
+.finished{
+    color:#e85d60;
+    padding-left: .42rem;
+}
+
+/* card-list  ↑ */
+/* click-btn ↓ */
+.click-btn {
+    height: 1.2rem;
+    margin-bottom: .42rem;
+}
+.click-btn p{
+    margin-bottom: .1rem;
+    color: #8b8ba9;
+}
+.click-btn span{
+	color: red;
+}
+.click-btn button{
+    height: .82rem;
+    width: 2.42rem;
+    background: url(../imgs/get-card-bg.png) no-repeat center;
+    border-radius: .41rem;
+    vertical-align: top;
+    color: #fff;
+    font-size: .32rem;
+    font-weight: bold;
+}
+/* 抽卡按钮 置灰,对应的标签添加class名dis即可 */
+.click-btn button.dis{
+    background: url(../imgs/click-h-btn.png) no-repeat left top;
+    background-size: cover;
+}
+/* click-btn ↑ */
+/* footer ↓ */
+.footer {
+    text-align: center;
+    height: .46rem;
+}
+.footer button{
+    border: 0.02rem solid #bfbfbf;
+    border-radius: 1px;
+    height: .46rem;
+    width: 1.5rem;
+    line-height: .46rem;
+    font-size: .24rem;
+    border-radius: .34rem;
+    background: #fff;
+    color:#000000;
+    vertical-align: top;
+}
+/* footer ↑ */
+/* mask ↓ */
+.mask{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 15;
+    background: black;
+    opacity: 0.7;
+    display: none;
+}
+.get-card{
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+	transform:translateX(-50%) translateZ(3rem) scale(0.1) rotateY(0) ;
+	display: none;
+	top: 2.3rem;
+    width: 5.32rem;
+	height: 7.33rem;
+}
+.get-card img{
+    width: 5.32rem;
+    height: 7.33rem;
+
+}
+.get-card .geted{
+	-webkit-appearance: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateZ(100px) ;
+    bottom: -1.53rem;
+    border-radius: .4rem;
+    height: .88rem;
+    width: 2.4rem;
+	z-index: 30;
+	background: url(../imgs/get-card-bg.png) no-repeat center;
+	color: #fff;
+	display: none;
+	font-size: .32rem;
+	font-weight: bold;
+}
+/* 领卡 ↓ */
+.receive-card{
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+	transform: translateX(-50%) scale(0.1);
+	display: none;
+	top: 2rem;
+    width: 3.84rem;
+	height: 5.4rem;
+}
+.receive-msg{
+    position: absolute;
+    width: 3.84rem;
+    top: -1.6rem;
+    color: #fff;
+    font-size: .38rem;
+    text-align: center;
+    display: none;
+}
+.receive-msg p{
+    line-height: .7rem;
+}
+.receive-card img{
+    width: 3.84rem;
+	height: 5.4rem;
+}
+.receive-card .receive-btn{
+	-webkit-appearance: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateZ(100px) ;
+    bottom: -1.53rem;
+    border-radius: .4rem;
+    height: .88rem;
+    width: 2.4rem;
+	z-index: 30;
+	background: url(../imgs/get-card-bg.png) no-repeat center;
+	color: #fff;
+	display: none;
+	font-size: .32rem;
+	font-weight: bold;
+}
+/* 领卡 ↑ */
+.count-down, .get-bonus, .game-over, .rules, .reg-phone{
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: none;
+}
+.count-down p{
+    font-size: .28rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.count-down .start{
+    top: 3.7rem;
+    left: 3.42rem;
+}
+.count-down .still{
+    bottom: 3.45rem;
+    left: 3.42rem;
+}
+.count-down em{
+    font-weight: bold;
+    color: #d8334a;
+    font-size: 0.5rem;
+    font-style: italic;
+}
+.count-down img{
+    width: 7.11rem;
+    height: 9.62rem;  
+}
+.count-down .close{
+    position: absolute;
+    width: .68rem;
+    height: .68rem;
+    left: 3.18rem;
+    bottom: .72rem;
+}
+.game-over img{
+    width: 4.83rem;
+    height: 8.02rem;
+}
+.get-bonus img{
+    width: 5.77rem;
+    height: 8.02rem;
+}
+.get-bonus p{
+    position: absolute;
+    width: 3.64rem;
+    word-wrap: none;
+    font-size: .38rem;
+    font-weight: bold;
+    color: #000000;
+    left: 50%;
+    top: 1.8rem;
+    transform: translateX(-50%);
+}
+.go-to-see{
+    position: absolute;
+    width: 2.4rem;
+    height: .7rem;
+    top: 4.3rem;
+    left: 48%;
+    transform: translateX(-50%);
+}
+.get-bonus strong{
+    color:#d8334a;
+}
+.get-bonus .close{
+    position: absolute;
+    width: .68rem;
+    height: .68rem;
+    left: 2.48rem;
+    bottom: .22rem;
+}
+.game-over .download-app{
+    position: absolute;
+    width: 2.38rem;
+    height: .7rem; 
+    left: 1.28rem;
+    bottom: 3.27rem;
+}
+.game-over .close{
+    position: absolute;
+    width: .68rem;
+    height: .68rem;
+    left: 2.18rem;
+    bottom: .22rem;
+}
+/* mask ↑ */
+/* 第一次进入 ↓ */
+.init-card{
+	position: absolute;
+	left: 50%;
+	top: 2.12rem;
+    transform: translateX(-50%);
+    /* mask的z-index改为10 */
+	z-index: 10;
+	width: 5.32rem;
+	height: 7.38rem;
+    border-radius: .2rem;
+    /* display: none; */
+}
+.init-card img{
+	width: 5.32rem;
+	height: 7.38rem;
+}
+.init-card div{
+    background: #000;
+    opacity: 0;
+    position: absolute;
+}
+.l-mask{
+    top: 0;
+    left: -1.05rem;
+    width: 1.05rem;
+    height: 7.38rem;
+}
+.r-mask{
+    top: 0;
+    right: -1.05rem;
+    width: 1.05rem;
+    height: 7.38rem;
+}
+.b-mask{
+    bottom: -3.3rem;
+    left: -1.05rem;
+    height: 1.8rem;
+    width: 7.4rem;
+}
+/* 第一次进入 ↑ */
+/* 输入手机领取 ↓ */
+.reg-phone{
+	width: 6.5rem;
+	height: 4.6rem;
+	background: #fff;
+	top: 5.6rem;
+	border-radius: .1rem;
+}
+.reg-phone h5{
+	width: 5.74rem;
+	height: .84rem;
+	line-height: .84rem;
+	font-size: .24rem;
+	text-align: center;
+	margin: 0 auto;
+	font-weight: bold;
+	border-bottom: 1px solid #f5f5f5;
+}
+.reg-phone input{
+	box-sizing: border-box;
+	vertical-align: middle;
+	padding-left: .86rem;
+	margin-left: .48rem;
+	height: .68rem;
+	line-height: .68rem;
+	width: 3.4rem;
+}
+.reg-phone .phone{
+	background: url(../imgs/phone.png) no-repeat left center;
+	background-size: .38rem .6rem;
+}
+.reg-phone .pwd{
+	background: url(../imgs/id-code.png) no-repeat left center;
+	background-size: .5rem .6rem;
+}
+.reg-phone .id-code{
+	display: inline-block;
+	height: .68rem;
+	background: #c4c4c4;
+	font-size: .2rem;
+	vertical-align: middle;
+	box-sizing: border-box;
+	border-radius: .05rem;
+	color: #f8f8f8;
+}
+.reg-phone p{
+	font-size: .22rem;
+	margin-left: .48rem;
+	height: .66rem;
+	line-height: .66rem;
+}
+.reg-phone .submit{
+	display: block;
+	width: 5.84rem;
+	height: 0.68rem;
+	margin: 0 auto;
+	text-align: center;
+	font-size: .24rem;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border-radius: .06rem;
+}
+/* 输入手机领取 ↑ */
+/* 活动规则 ↓ */
+.card-list a{
+    display: block;
+    width: 1.2rem;
+	margin: .16rem auto 0;
+    font-size: .22rem;
+    border-bottom: 1px solid #000;
+    color: #000;    
+}
+.rules{
+    position: absolute;
+    top: 5.6rem;
+    width: 6.54rem;
+    height: 5.12rem;
+    background: #fff;
+    border-radius: 5px;
+    padding: 0.4rem .5rem; 
+}
+.rules img{
+    position: absolute;
+    right: 2px;
+    top: -0.82rem;
+    width: .6rem;
+    height: .6rem;
+    border: 1px solid #cdcccc;
+    border-radius: 50%;
+}
+.rules h5{
+    font-size: .36rem;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: .3rem;
+}
+.rules ol{
+    margin-left: .2rem;
+}
+.rules li{
+    font-size: .24rem;
+    line-height: .36rem;
+    list-style-type: decimal;
+}
+/* 活动规则 ↑ */
+/* 分享结果 ↓ */
+.sharing-result {  
+    font-size: .22rem;
+    text-align: center;  
+}  
+  .sharing-result .line {  
+    display: inline-block;  
+    width: 2.26rem;  
+    border-top: 1px solid #ccc ;  
+}  
+.sharing-result .txt {  
+    color: #000;  
+    vertical-align: middle;  
+} 
+ .sharing-result li{
+	box-sizing: border-box;
+	position: relative;
+    height: 1.14rem;
+    line-height: 1.14rem;
+	margin: .24rem .4rem 0;
+	border-bottom: 1px solid #cfcfcf;
+ }
+ .sharing-result li:last-child{
+	 border-bottom: none;
+ }
+ .share-l{
+	float: left;
+	width: 3.6rem;
+	text-align: left;
+	height: .72rem;
+ }
+ .share-l img{
+	border-radius: 50%;
+	height: .76rem;
+	vertical-align: top;
+ }
+ .share-l span{
+	width: 3rem;
+	padding-left: .12rem;
+ }
+ .share-l .nickname{
+	position: absolute;
+	top: 0;
+	height: .46rem;
+	line-height: .46rem;
+	font-size: .26rem;
+ }
+ .share-l .share-time{
+	top: .46rem;
+	position: absolute;
+	height: .26rem;
+	line-height: .26rem;
+	font-size: .22rem;
+	color: #676767;
+}
+ .share-r{
+	float: right;
+	width: 2.8rem;
+	font-size: .24rem;
+	height: .72rem;
+	line-height: .72rem;
+} 
+/* 分享结果 ↑ */
+/* 集齐按钮 ↓ */
+.gongxi{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.love{
+    position: absolute;
+    right: .24rem;
+    top: 9.7rem;
+    z-index: 5;
+    width: 1.24rem;
+    height: 1.22rem;
+    transform-origin: 50% 100%;
+}
+.love img{
+    width: 1.24rem;
+    height: 1.22rem;
+}
+/* 集齐按钮 ↑ */
+/* 卡片分享按钮 ↓ */
+.share-btn-one{
+    color:#9f83ff;
+    border: 1px solid #9f83ff;
+}
+.share-btn-two{
+    color:#ffa291;
+    border: 1px solid #ffa291;
+}
+.share-btn-three{
+    color:#9d72af;
+    border: 1px solid #9d72af;
+}
+.share-btn-four{
+    color:#79cbf8;
+    border: 1px solid #79cbf8;
+}
+.share-btn-five{
+    color:#ed5385;
+    border: 1px solid #ed5385;
+}
+.share-btn-six{
+    color:#d2b08b;
+    border: 1px solid #d2b08b;
+}
+/* 卡片分享按钮 ↑ */
+
+/* main  ↑ */
